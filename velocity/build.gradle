@@ -1,12 +1,27 @@
 apply plugin: "net.kyori.blossom"
 
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', '../api/src/main/java', '../common/src/main/java']
+        }
+    }
+}
+
 blossom {
     replaceToken '@version@', project.version
 }
 
 dependencies {
-    compileOnly "com.velocitypowered:velocity-api:1.1.0-SNAPSHOT"
-    annotationProcessor "com.velocitypowered:velocity-api:1.1.0-SNAPSHOT"
-    implementation project(":nuvotifier-api")
-    implementation project(":nuvotifier-common")
+    compileOnly "gg.solarmc.velocity:velocity-api:3.0.2-SNAPSHOT"
+    annotationProcessor "gg.solarmc.velocity:velocity-api:3.0.2-SNAPSHOT"
+
+    // Common dependencies
+    api libraries.gson
+    implementation libraries.netty
+    implementation libraries.nettyEpoll
+}
+
+compileJava {
+    options.javaModuleVersion = provider { project.version }
 }

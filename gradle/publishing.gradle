@@ -1,0 +1,17 @@
+
+publishing {
+    repositories {
+        maven {
+            credentials {
+                username System.getenv("REPO_USER")
+                password System.getenv("REPO_PASS")
+            }
+
+            name = 'solar-repo'
+            def base = "https://maven.cloudsmith.io/solarmc/oss-affero-gpl3"
+            def releasesRepoUrl = "$base"
+            def snapshotsRepoUrl = "$base"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+}

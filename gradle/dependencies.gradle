@@ -1,0 +1,7 @@
+ext {
+    libraries = [
+        gson: "com.google.code.gson:gson:2.8.7",
+        netty: "io.netty:netty-handler:4.1.49.Final",
+        nettyEpoll: "io.netty:netty-transport-native-epoll:4.1.49.Final:linux-x86_64"
+    ]
+}
